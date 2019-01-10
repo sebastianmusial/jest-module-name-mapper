@@ -14,7 +14,7 @@
     "start": "nodemon --watch src --ext ts --ignore '*.spec.ts' --exec ts-node src/index.ts",
     "lint": "tslint --config tslint.json --project tsconfig.json",
     "pretest": "yarn lint",
-    "test": "jest --expand --coverage",
+    "test": "jest --expand --coverage --runInBand",
     "test:watch": "jest --expand --watchAll",
     "prepublish": "yarn build"
   },

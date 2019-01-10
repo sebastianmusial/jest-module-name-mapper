@@ -1,0 +1,28 @@
+sudo: false
+dist: trusty
+
+language: node_js
+
+node_js:
+  - "8"
+
+cache:
+  directories:
+    - node_modules
+
+git:
+  submodules: false
+
+install:
+  - npm i -g yarn
+  - npm i -g codecov
+  - yarn
+  - yarn test
+
+script:
+  - codecov
+
+branches:
+  only:
+  - master
+  - develop
