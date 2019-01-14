@@ -1,6 +1,6 @@
 {
   "name": "jest-module-name-mapper",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Synchronization tsconfig paths with Jest (module name mapper)",
   "main": "dist/index.js",
   "repository": "https://github.com/sebastianmusial/jest-module-name-mapper",
