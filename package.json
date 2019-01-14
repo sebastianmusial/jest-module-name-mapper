@@ -1,12 +1,24 @@
 {
   "name": "jest-module-name-mapper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Synchronization tsconfig paths with Jest (module name mapper)",
   "main": "dist/index.js",
   "repository": "https://github.com/sebastianmusial/jest-module-name-mapper",
   "author": "Sebastian Musiał",
   "license": "MIT",
   "private": false,
+  "homepage": "https://github.com/sebastianmusial/jest-module-name-mapper#readme",
+  "bugs": {
+    "url": "https://github.com/sebastianmusial/jest-module-name-mapper/issues"
+  },
+  "keywords": [
+    "jest",
+    "tsconfig",
+    "moduleNameMapper",
+    "path",
+    "aliases",
+    "tests"
+  ],
   "scripts": {
     "postinstall": "yarn build",
     "clear": "rimraf dist",
