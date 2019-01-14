@@ -20,7 +20,6 @@
     "tests"
   ],
   "scripts": {
-    "postinstall": "yarn build",
     "clear": "rimraf dist",
     "build": "yarn clear && tsc",
     "start": "nodemon --watch src --ext ts --ignore '*.spec.ts' --exec ts-node src/index.ts",
