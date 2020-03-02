@@ -17,6 +17,9 @@
     "pretty": true,
     "strict": true,
     "target": "es2017",
+    "skipLibCheck": true,
+    "importHelpers": true,
+    "removeComments": true,
     "lib": [
       "dom",
       "es2017"
