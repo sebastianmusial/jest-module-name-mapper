@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/",
+    "rootDir": "src",
+    "outDir": "dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
     "module": "commonjs",
     "resolveJsonModule": true,
     "moduleResolution": "node",
-    "sourceMap": true,
+    "sourceMap": false,
     "noImplicitAny": false,
     "noEmitOnError": true,
     "forceConsistentCasingInFileNames": true,
@@ -24,15 +26,15 @@
       "dom",
       "es2017"
     ],
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
     "paths": {
-      "@src/*": ["src/*"]
+      "@src/*": [
+        "src/*"
+      ]
     }
   },
-  "include": [
-    "./node_modules/@types",
-    "./src/**/*.ts"
+  "exclude": [
+    "dist",
+    "src/**/*.spec.ts",
+    "src/mocks/*"
   ]
 }

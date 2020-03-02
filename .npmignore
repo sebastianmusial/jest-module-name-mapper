@@ -1,0 +1,8 @@
+coverage
+src
+tslint.json
+tsconfig.json
+jest.config.js
+codecov.yml
+.travis.yml
+.editorconfig

@@ -3,6 +3,7 @@
   "version": "0.1.2",
   "description": "Synchronization tsconfig paths with Jest (module name mapper)",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "repository": "https://github.com/sebastianmusial/jest-module-name-mapper",
   "author": "Sebastian Musiał",
   "license": "MIT",
@@ -20,8 +21,10 @@
     "tests"
   ],
   "scripts": {
-    "clear": "rimraf dist",
-    "build": "yarn clear && tsc",
+    "clear": "tsc -b --clean",
+    "prebuild": "yarn clear && yarn generate",
+    "build": "tsc -b --force",
+    "generate": "dts-generator --name jest-module-name-mapper --project ./tsconfig.json --out dist/index.d.ts --main jest-module-name-mapper/index --prefix jest-module-name-mapper",
     "start": "nodemon --watch src --ext ts --ignore '*.spec.ts' --exec ts-node src/index.ts",
     "lint": "tslint --config tslint.json --project tsconfig.json",
     "pretest": "yarn lint",
@@ -44,15 +47,16 @@
     "chalk": "^2.4.2"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.12",
+    "@types/jest": "^25.1.3",
     "@types/node": "^10.12.18",
-    "tslib": "^1.11.1",
+    "dts-generator": "^3.0.0",
     "husky": "^1.3.1",
-    "nodemon": "^1.18.9",
     "jest": "^25.1.0",
-    "ts-jest": "^23.10.5",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.12.0",
-    "typescript": "^3.2.2"
+    "nodemon": "^2.0.2",
+    "ts-jest": "^25.2.1",
+    "ts-node": "^8.6.2",
+    "tslib": "^1.11.1",
+    "tslint": "^6.0.0",
+    "typescript": "^3.8.3"
   }
 }
