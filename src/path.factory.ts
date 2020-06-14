@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { TSConfigPaths, FreshPath, JestPath } from './models';
 import { baseUrlFactory } from './base-url.factory';
-import { getConfig } from './config.factory';
+import { loadConfig, ConfigLoaderSuccessResult } from 'tsconfig-paths';
 
 const keyFactory = (key: string): string =>
   `^${key.replace(/\*/, '(.*)')}`;
@@ -9,7 +9,7 @@ const keyFactory = (key: string): string =>
 const valueFactory = (values: string[], baseUrl: string) =>
   `${baseUrl}/${values[0].replace(/\*/, '$1')}`;
 
-const connectPath = (path: FreshPath, baseUrl: string): JestPath  => ({
+const connectPath = (path: FreshPath, baseUrl: string): JestPath => ({
   [keyFactory(path[0])]: valueFactory(path[1], baseUrl)
 });
 
@@ -25,8 +25,13 @@ const pathFactory = (paths: TSConfigPaths, baseUrl: string) =>
     .reduce(convertToJestFormat, {});
 
 export const moduleNameMapper = (path?: string) => {
-  const config = getConfig(path);
-  const { compilerOptions: { paths, baseUrl }} = config;
+  const config = loadConfig(path);
+
+  if (config.resultType !== 'success') {
+    console.error(chalk.red('[tsconfig.json] unable to load'));
+    process.exit();
+  }
+  const { paths, baseUrl } = config as ConfigLoaderSuccessResult;
 
   if (!paths || !baseUrl) {
     console.error(chalk.red('[tsconfig.json] "paths" or "baseUrl" field does not exist'));
@@ -36,4 +41,3 @@ export const moduleNameMapper = (path?: string) => {
   const transformedBaseUrl = baseUrlFactory(baseUrl);
   return pathFactory(paths, transformedBaseUrl);
 };
-
